@@ -1,4 +1,5 @@
 ### Todo List
+- Bug: Current day has to be explicitly set
 - Could expand day feature to a general "list" feature.
     - Since days can hold lists, why not other arbitrary things?
     - Could work the same way, sorting lists of todos by list name
