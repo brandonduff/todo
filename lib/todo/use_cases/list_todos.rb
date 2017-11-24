@@ -3,6 +3,7 @@ module Todo
     class ListTodos
       def initialize(request)
         @request = request
+        @presenter = request[:presenter] || ConsolePresenter.new
       end
 
       def perform
@@ -19,7 +20,7 @@ module Todo
       private
 
       def present(tasks)
-        tasks.to_a.map(&:description)
+        presenter.present(tasks)
       end
 
       def persistence
@@ -34,6 +35,14 @@ module Todo
           fetcher.for_week
         else
           fetcher
+        end
+      end
+
+      attr_reader :presenter
+
+      class ConsolePresenter
+        def present(tasks)
+          tasks.to_a.map(&:description)
         end
       end
     end

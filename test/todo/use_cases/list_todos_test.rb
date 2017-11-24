@@ -60,6 +60,17 @@ module Todo
 
         assert_equal([first_task_list.to_a.first.description, second_task_list.to_a.first.description], todos)
       end
+
+      def test_accepts_presenter
+        task_list = TaskListBuilder.new([{ description: 'hello', done: false }, { description: 'goodbye', done: false }]).build
+        save_todo_file(task_list)
+        console_presenter = double
+        allow(console_presenter).to receive(:present).with(task_list).and_return('presented tasks')
+
+        todos = ListTodos.new(presenter: console_presenter).perform
+
+        assert_equal('presented tasks', todos)
+      end
     end
   end
 end
