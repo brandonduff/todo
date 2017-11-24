@@ -30,7 +30,7 @@ module Todo
 
     def test_writing_ensure_todo_dir_exists
       allow(@writer).to receive(:write_to).with(@todo_path)
-      Dir.rmdir(@env_helper.todo_path)
+      Dir.rmdir(@env_helper.todo_path) if Dir.exist?(@env_helper.todo_path)
 
       Persistence.new.write_todays_tasks('foo')
 

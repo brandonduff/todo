@@ -20,7 +20,7 @@ module Todo
       private
 
       def present(tasks)
-        presenter.present(tasks)
+        presenter.present(tasks.to_a)
       end
 
       def persistence
