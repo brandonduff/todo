@@ -6,6 +6,10 @@ module Todo
       new(date_string).format
     end
 
+    def self.today
+      Date.today.strftime("%d-%m-%Y")
+    end
+
     def initialize(date_string)
       @date_string = date_string
     end
@@ -29,7 +33,7 @@ module Todo
     end
 
     def today
-      Date.today.strftime("%d-%m-%Y")
+      self.class.today
     end
 
     def parse_full_date_string

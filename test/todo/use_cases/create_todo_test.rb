@@ -20,6 +20,14 @@ module Todo
 
         assert_equal("existing\ntest\n", File.read(todo_file_for(@today)))
       end
+
+      def test_uses_today_by_default
+        FileUtils.rm(@current_day_file_name)
+
+        CreateTodo.new('test').perform
+
+        assert_equal("test\n", File.read(todo_file_for(Date.today.strftime("%d-%m-%Y"))))
+      end
     end
   end
 end

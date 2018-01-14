@@ -21,11 +21,11 @@ module Todo
     end
 
 
-    def test_get_current_day_when_file_doesnt_exist_returns_empty_string
+    def test_get_current_day_when_file_doesnt_exist_returns_current_day
       allow(@env_helper).to receive(:current_day_path).and_return('non_existent')
       reader = Reader.new(@env_helper)
 
-      assert_equal('', reader.current_day)
+      assert_equal(Date.today.strftime("%d-%m-%Y"), reader.current_day)
     end
 
     def test_task_data_for_day_when_file_exists
