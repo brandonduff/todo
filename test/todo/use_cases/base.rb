@@ -18,7 +18,6 @@ module Todo
         ENV['HOME'] = 'tmp'
         @today = '10-03-1993'
         FileUtils.rm_rf('tmp')
-        current_day = Date.parse(@today)
         current_day_file_name = 'tmp/.current_day.txt'
         Dir.mkdir('tmp') unless Dir.exist?('tmp')
         current_day = File.open(current_day_file_name, 'a')
