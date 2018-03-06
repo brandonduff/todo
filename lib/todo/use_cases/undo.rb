@@ -20,7 +20,7 @@ module Todo
       end
 
       def present(task)
-        task.description
+        task.to_s
       end
     end
   end

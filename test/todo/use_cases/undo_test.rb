@@ -18,6 +18,11 @@ module Todo
       def test_undo_presents_undone_todo
         assert_equal("no longer done", Undo.new.perform)
       end
+
+      def test_with_empty_list
+        set_current_day('10-04-1993')
+        assert_equal('', Undo.new.perform)
+      end
     end
   end
 end
