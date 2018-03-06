@@ -16,7 +16,7 @@ module Todo
       end
 
       def present(todo)
-        todo.description
+        todo.to_s
       end
 
       def persistence

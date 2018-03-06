@@ -20,10 +20,14 @@ module Todo
         FileUtils.rm_rf('tmp')
         @current_day_file_name = 'tmp/.current_day.txt'
         Dir.mkdir('tmp') unless Dir.exist?('tmp')
-        current_day = File.open(@current_day_file_name, 'a')
-        current_day.puts(@today)
-        current_day.close
+        set_current_day(@today)
         Dir.mkdir('tmp/todos')
+      end
+
+      def set_current_day(today)
+        current_day = File.open(@current_day_file_name, 'a')
+        current_day.puts(today)
+        current_day.close
       end
 
       def reset_home

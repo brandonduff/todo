@@ -18,6 +18,11 @@ module Todo
         Done.new.perform
         assert_equal("✓ hello\ngoodbye\n", File.read(todo_file_for('10-03-1993')))
       end
+
+      def test_does_nothing_when_there_are_no_todos
+        set_current_day('10-04-1993')
+        assert_equal('', Done.new.perform)
+      end
     end
   end
 end
