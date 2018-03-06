@@ -25,7 +25,7 @@ module Todo
     end
 
     def to_s
-      @tasks.map(&:description).join("\n")
+      @tasks.map(&:to_s).join("\n")
     end
 
     def to_a

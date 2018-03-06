@@ -32,7 +32,7 @@ module Todo
 
         todos = ListTodos.new(all: true).perform
 
-        assert_equal([task_list.to_a[0].description, done_todo.description], todos)
+        assert_equal([task_list.to_a[0].formatted_description, done_todo.formatted_description], todos)
       end
 
       def test_week_option
@@ -45,7 +45,7 @@ module Todo
 
         todos = ListTodos.new(week: true).perform
 
-        assert_equal([first_task_list.to_a.first.description, second_task_list.to_a.first.description], todos)
+        assert_equal([first_task_list.to_a.first.formatted_description, second_task_list.to_a.first.formatted_description], todos)
       end
 
       def test_month_option
@@ -58,7 +58,7 @@ module Todo
 
         todos = ListTodos.new(month: true).perform
 
-        assert_equal([first_task_list.to_a.first.description, second_task_list.to_a.first.description], todos)
+        assert_equal([first_task_list.to_a.first.formatted_description, second_task_list.to_a.first.formatted_description], todos)
       end
 
       def test_accepts_presenter

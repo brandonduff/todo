@@ -6,7 +6,7 @@ module Todo
       @done = done
     end
 
-    def description
+    def formatted_description
       done? ? '✓ ' + @description : @description
     end
 
@@ -27,11 +27,13 @@ module Todo
     end
 
     def to_s
-      description
+      formatted_description
     end
 
     def ==(other)
       other.description == description && other.done? == done?
     end
+
+    attr_reader :description
   end
 end

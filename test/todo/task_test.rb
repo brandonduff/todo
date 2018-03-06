@@ -12,12 +12,12 @@ module Todo
     end
 
     def test_description
-      assert_equal('do this and that', @task_item.description)
+      assert_equal('do this and that', @task_item.formatted_description)
     end
 
     def test_done
       done_task = @task_item.done
-      assert_equal('✓ do this and that', done_task.description)
+      assert_equal('✓ do this and that', done_task.formatted_description)
     end
 
     def test_done?
@@ -32,14 +32,14 @@ module Todo
 
     def test_undo_with_one_done_task_undoes_it
       @task_item.done
-      assert_equal('do this and that', @task_item.undo.description)
+      assert_equal('do this and that', @task_item.undo.formatted_description)
     end
 
     def test_equality_is_true_when_description_and_doneness_are_eqaul
-      other_task = Todo::Task.new(@task_item.description)
+      other_task = Todo::Task.new(@task_item.formatted_description)
       assert_equal(other_task, @task_item)
 
-      other_task = Todo::Task.new(@task_item.description, true)
+      other_task = Todo::Task.new(@task_item.formatted_description, true)
       assert(other_task != @task_item)
 
       other_task = Todo::Task.new('different description')
@@ -47,7 +47,7 @@ module Todo
     end
 
     def test_to_s
-      assert_equal('do this and that', @task_item.to_s)
+      assert_equal('✓ do this and that', @task_item.done.to_s)
     end
   end
 end

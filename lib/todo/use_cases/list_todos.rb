@@ -42,7 +42,7 @@ module Todo
 
       class ConsolePresenter
         def present(tasks)
-          tasks.to_a.map(&:description)
+          tasks.to_a.map(&:to_s)
         end
       end
     end
